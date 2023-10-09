@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/computer/create', [App\Http\Controllers\ComputerController::class, 'create'])->name('computer.create');
+Route::post('/computer', [App\Http\Controllers\ComputerController::class, 'store'])->name('computer.store');
