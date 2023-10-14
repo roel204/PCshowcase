@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function computers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Computer::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

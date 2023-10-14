@@ -9,5 +9,12 @@ class computer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'cpu', 'gpu'];
+    protected $fillable = ['user_id', 'name', 'cpu', 'gpu', 'is_online'];
+
+    protected $casts = ['is_online' => 'boolean'];
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

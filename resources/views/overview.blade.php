@@ -1,0 +1,46 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Overview') }}</div>
+
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>CPU</th>
+                                <th>GPU</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($computers as $computer)
+                                <tr>
+                                    <td>{{ $computer->name }}</td>
+                                    <td>{{ $computer->cpu }}</td>
+                                    <td>{{ $computer->gpu }}</td>
+                                    <td>
+                                        <a href="{{ route('computer.edit', ['id' => $computer->id]) }}" class="btn btn-primary">Edit</a>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('computer.delete', ['id' => $computer->id]) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
