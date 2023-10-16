@@ -19,6 +19,15 @@
                             </div>
                         @endif
 
+                        <h2>Online Computers</h2>
+
+                        <ul>
+                            @forelse ($computers as $computer)
+                                <li>{{ $computer->name }}: CPU: {{ $computer->cpu }} | GPU: {{ $computer->gpu }}</li>
+                            @empty
+                                <p>No online computers at the moment.</p>
+                            @endforelse
+                        </ul>
                     </div>
                 </div>
             </div>
