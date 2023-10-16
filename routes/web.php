@@ -17,9 +17,10 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/computer/create', [App\Http\Controllers\ComputerController::class, 'create'])->name('computer.create');
-Route::post('/computer', [App\Http\Controllers\ComputerController::class, 'store'])->name('computer.store');
-Route::delete('/computer/{id}/delete', [App\Http\Controllers\ComputerController::class, 'delete'])->name('computer.delete');
+Route::get('/computer/create', [App\Http\Controllers\ComputerController::class, 'create'])->name('computer.create')->middleware('auth');
+Route::post('/computer', [App\Http\Controllers\ComputerController::class, 'store'])->name('computer.store')->middleware('auth');
+Route::delete('/computer/{id}/delete', [App\Http\Controllers\ComputerController::class, 'delete'])->name('computer.delete')->middleware('auth');
 
-Route::get('/computer/overview', [App\Http\Controllers\ComputerController::class, 'overview'])->name('computer.overview');
-Route::get('/computer/edit', [App\Http\Controllers\ComputerController::class, 'edit'])->name('computer.edit');
+Route::get('/computer/overview', [App\Http\Controllers\ComputerController::class, 'overview'])->name('computer.overview')->middleware('auth');
+
+Route::get('/computer/edit', [App\Http\Controllers\ComputerController::class, 'edit'])->name('computer.edit')->middleware('auth');

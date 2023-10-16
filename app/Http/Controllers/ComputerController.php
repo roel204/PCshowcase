@@ -15,7 +15,8 @@ class ComputerController extends Controller
 
     public function overview()
     {
-        $computers = Computer::all();
+        $computers = auth()->user()->computers;
+
         return view('overview', compact('computers'));
     }
 
