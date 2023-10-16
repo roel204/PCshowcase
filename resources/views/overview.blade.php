@@ -25,6 +25,7 @@
                                 <th>CPU</th>
                                 <th>GPU</th>
                                 <th>Edit</th>
+                                <th>Status</th>
                                 <th>Delete</th>
                             </tr>
                             </thead>
@@ -35,10 +36,26 @@
                                     <td>{{ $computer->cpu }}</td>
                                     <td>{{ $computer->gpu }}</td>
                                     <td>
-                                        <a href="{{ route('computer.edit', ['id' => $computer->id]) }}" class="btn btn-primary">Edit</a>
+                                        <a href="{{ route('computer.edit', ['id' => $computer->id]) }}"
+                                           class="btn btn-primary">Edit</a>
                                     </td>
                                     <td>
-                                        <form action="{{ route('computer.delete', ['id' => $computer->id]) }}" method="post">
+
+                                        <form action="{{ route('computer.toggle-status', ['id' => $computer->id]) }}" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <input
+                                                type="checkbox"
+                                                name="is_online"
+                                                {{ $computer->is_online ? 'checked' : '' }}
+                                                onchange="this.form.submit()"
+                                            >
+                                        </form>
+
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('computer.delete', ['id' => $computer->id]) }}"
+                                              method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>

@@ -26,6 +26,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/computer/create', [CC::class, 'create'])->name('computer.create');
     Route::delete('/computer/{id}/delete', [CC::class, 'delete'])->name('computer.delete');
     Route::put('/computer/update/{id}', [CC::class, 'update'])->name('computer.update');
+    Route::put('/computer/toggle-status/{id}', [CC::class, 'toggleStatus'])->name('computer.toggle-status');
+
 
 });
 

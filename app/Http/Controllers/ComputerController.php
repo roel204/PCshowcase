@@ -8,16 +8,32 @@ use Illuminate\Support\Facades\Auth;
 
 class ComputerController extends Controller
 {
-    public function create()
-    {
-        return view('create');
-    }
 
     public function overview()
     {
         $computers = auth()->user()->computers;
 
         return view('overview', compact('computers'));
+    }
+
+    public function create()
+    {
+        return view('create');
+    }
+
+    public function edit($id)
+    {
+        $computer = Computer::findOrFail($id);
+
+        return view('edit', compact('computer'));
+    }
+
+    public function toggleStatus($id)
+    {
+        $computer = Computer::findOrFail($id);
+        $computer->update(['is_online' => !$computer->is_online]);
+
+        return redirect()->route('computer.overview')->with('success', 'Status updated successfully.');
     }
 
     public function store(Request $request)
@@ -36,13 +52,6 @@ class ComputerController extends Controller
         ]);
 
         return redirect()->route('computer.overview')->with('success', 'Computer added successfully.');
-    }
-
-    public function edit($id)
-    {
-        $computer = Computer::findOrFail($id);
-
-        return view('edit', compact('computer'));
     }
 
     public function delete($id)
