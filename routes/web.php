@@ -21,9 +21,10 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::post('/computer', [App\Http\Controllers\ComputerController::class, 'store'])->name('computer.store');
     Route::get('/computer/overview', [App\Http\Controllers\ComputerController::class, 'overview'])->name('computer.overview');
-    Route::get('/computer/edit', [App\Http\Controllers\ComputerController::class, 'edit'])->name('computer.edit');
+    Route::get('/computer/edit/{id}', [App\Http\Controllers\ComputerController::class, 'edit'])->name('computer.edit');
     Route::get('/computer/create', [App\Http\Controllers\ComputerController::class, 'create'])->name('computer.create');
     Route::delete('/computer/{id}/delete', [App\Http\Controllers\ComputerController::class, 'delete'])->name('computer.delete');
+    Route::put('/computer/update/{id}', [App\Http\Controllers\ComputerController::class, 'update'])->name('computer.update');
 
 });
 

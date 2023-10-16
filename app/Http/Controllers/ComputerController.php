@@ -35,7 +35,14 @@ class ComputerController extends Controller
             'gpu' => $request->input('gpu'),
         ]);
 
-        return redirect()->route('home')->with('success', 'Computer added successfully.');
+        return redirect()->route('computer.overview')->with('success', 'Computer added successfully.');
+    }
+
+    public function edit($id)
+    {
+        $computer = Computer::findOrFail($id);
+
+        return view('edit', compact('computer'));
     }
 
     public function delete($id)
@@ -44,5 +51,24 @@ class ComputerController extends Controller
         $computer->delete();
 
         return redirect()->route('computer.overview')->with('success', 'Computer deleted successfully.');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'cpu' => 'required|string',
+            'gpu' => 'required|string',
+        ]);
+
+        $computer = Computer::findOrFail($id);
+
+        $computer->update([
+            'name' => $request->input('name'),
+            'cpu' => $request->input('cpu'),
+            'gpu' => $request->input('gpu'),
+        ]);
+
+        return redirect()->route('computer.overview')->with('success', 'Computer updated successfully.');
     }
 }

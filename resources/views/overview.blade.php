@@ -8,6 +8,16 @@
                     <div class="card-header">{{ __('Overview') }}</div>
 
                     <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         <table class="table">
                             <thead>
                             <tr>
