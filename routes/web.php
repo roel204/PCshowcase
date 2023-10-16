@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ComputerController as CC;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,12 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::post('/computer', [App\Http\Controllers\ComputerController::class, 'store'])->name('computer.store');
-    Route::get('/computer/overview', [App\Http\Controllers\ComputerController::class, 'overview'])->name('computer.overview');
-    Route::get('/computer/edit/{id}', [App\Http\Controllers\ComputerController::class, 'edit'])->name('computer.edit');
-    Route::get('/computer/create', [App\Http\Controllers\ComputerController::class, 'create'])->name('computer.create');
-    Route::delete('/computer/{id}/delete', [App\Http\Controllers\ComputerController::class, 'delete'])->name('computer.delete');
-    Route::put('/computer/update/{id}', [App\Http\Controllers\ComputerController::class, 'update'])->name('computer.update');
+    Route::post('/computer', [CC::class, 'store'])->name('computer.store');
+    Route::get('/computer/overview', [CC::class, 'overview'])->name('computer.overview');
+    Route::get('/computer/edit/{id}', [CC::class, 'edit'])->name('computer.edit');
+    Route::get('/computer/create', [CC::class, 'create'])->name('computer.create');
+    Route::delete('/computer/{id}/delete', [CC::class, 'delete'])->name('computer.delete');
+    Route::put('/computer/update/{id}', [CC::class, 'update'])->name('computer.update');
 
 });
 
