@@ -32,7 +32,7 @@
                             <tbody>
                             @foreach($computers as $computer)
                                 <tr>
-                                    <td>{{ $computer->name }}</td>
+                                    <td><a href="{{ route('computer.show', ['id' => $computer->id]) }}">{{ $computer->name }}</a></td>
                                     <td>{{ $computer->cpu }}</td>
                                     <td>{{ $computer->gpu }}</td>
                                     <td>

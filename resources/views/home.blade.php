@@ -23,7 +23,7 @@
 
                         <ul>
                             @forelse ($computers as $computer)
-                                <li>{{ $computer->name }}: CPU: {{ $computer->cpu }} | GPU: {{ $computer->gpu }}</li>
+                                <li><a href="{{ route('computer.show', ['id' => $computer->id]) }}">{{ $computer->name }}</a> CPU: {{ $computer->cpu }} | GPU: {{ $computer->gpu }}</li>
                             @empty
                                 <p>No online computers at the moment.</p>
                             @endforelse

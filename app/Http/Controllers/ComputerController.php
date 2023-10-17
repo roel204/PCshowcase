@@ -16,6 +16,13 @@ class ComputerController extends Controller
         return view('overview', compact('computers'));
     }
 
+    public function show($id)
+    {
+        $computer = Computer::where('id', $id)->firstOrFail();
+
+        return view('show', compact('computer'));
+    }
+
     public function create()
     {
         return view('create');
