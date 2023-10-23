@@ -14,10 +14,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/computer/edit/{id}', [CC::class, 'edit'])->name('computer.edit');
     Route::get('/computer/create', [CC::class, 'create'])->name('computer.create');
     Route::post('/computer/store', [CC::class, 'store'])->name('computer.store');
-    Route::delete('/computer/{id}/delete', [CC::class, 'delete'])->name('computer.delete');
+    Route::delete('/computer/delete/{id}', [CC::class, 'delete'])->name('computer.delete');
     Route::put('/computer/update/{id}', [CC::class, 'update'])->name('computer.update');
     Route::put('/computer/toggle-status/{id}', [CC::class, 'toggleStatus'])->name('computer.toggle-status');
 
+    //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware('check.admin');
 
 });
 

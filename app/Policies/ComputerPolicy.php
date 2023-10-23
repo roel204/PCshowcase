@@ -15,7 +15,7 @@ class ComputerPolicy
 
     public function delete(User $user, computer $computer)
     {
-        return $user->id === $computer->user_id;
+        return $user->id === $computer->user_id || $user->admin;
     }
 
 }
