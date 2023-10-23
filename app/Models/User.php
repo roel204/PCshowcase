@@ -14,7 +14,7 @@ class User extends Authenticatable
 
     public function computers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Computer::class);
+        return $this->hasMany(computer::class);
     }
 
     /**

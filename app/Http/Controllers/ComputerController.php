@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Computer;
+use App\Models\computer;
 use Illuminate\Support\Facades\Auth;
 
 class ComputerController extends Controller
@@ -18,7 +18,7 @@ class ComputerController extends Controller
 
     public function show($id)
     {
-        $computer = Computer::where('id', $id)->firstOrFail();
+        $computer = computer::where('id', $id)->firstOrFail();
 
         return view('show', compact('computer'));
     }
@@ -30,14 +30,15 @@ class ComputerController extends Controller
 
     public function edit($id)
     {
-        $computer = Computer::findOrFail($id);
+        $computer = computer::findOrFail($id);
+        $this->authorize('edit', $computer);
 
         return view('edit', compact('computer'));
     }
 
     public function toggleStatus($id)
     {
-        $computer = Computer::findOrFail($id);
+        $computer = computer::findOrFail($id);
         $computer->update(['is_online' => !$computer->is_online]);
 
         return redirect()->route('computer.overview')->with('success', 'Status updated successfully.');
@@ -63,7 +64,8 @@ class ComputerController extends Controller
 
     public function delete($id)
     {
-        $computer = Computer::findOrFail($id);
+        $computer = computer::findOrFail($id);
+        $this->authorize('delete', $computer);
         $computer->delete();
 
         return redirect()->route('computer.overview')->with('success', 'Computer deleted successfully.');
@@ -77,7 +79,7 @@ class ComputerController extends Controller
             'gpu' => 'required|string',
         ]);
 
-        $computer = Computer::findOrFail($id);
+        $computer = computer::findOrFail($id);
 
         $computer->update([
             'name' => $request->input('name'),

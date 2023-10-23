@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+Use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class computer extends Model
 {
@@ -13,7 +14,7 @@ class computer extends Model
 
     protected $casts = ['is_online' => 'boolean'];
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

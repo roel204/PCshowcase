@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Computer;
+use App\Models\computer;
 
 class HomeController extends Controller
 {
@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         // Get all online computers
-        $computers = Computer::where('is_online', true)->get();
+        $computers = computer::where('is_online', true)->get();
 
         return view('home', compact('computers'));
     }
