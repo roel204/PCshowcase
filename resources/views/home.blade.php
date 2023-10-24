@@ -18,16 +18,27 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-
-                        <h2>Online Computers</h2>
-
-                        <ul>
-                            @forelse ($computers as $computer)
-                                <li><a href="{{ route('computer.show', ['id' => $computer->id]) }}">{{ $computer->name }}</a> CPU: {{ $computer->cpu }} | GPU: {{ $computer->gpu }}</li>
-                            @empty
-                                <p>No online computers at the moment.</p>
-                            @endforelse
-                        </ul>
+                        <div class="container">
+                            <div class="row">
+                                @forelse ($computers as $computer)
+                                    <div class="col-md-6">
+                                        <a href="{{ route('computer.show', ['id' => $computer->id]) }}">
+                                            <div class="card mb-3">
+                                                <img src="{{ asset('images/default_pc.jpg') }}" class="card-img-top"
+                                                     alt="Default Image">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{ $computer->name }}</h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @empty
+                                    <div class="col-md-12">
+                                        <p>No online computers at the moment.</p>
+                                    </div>
+                                @endforelse
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

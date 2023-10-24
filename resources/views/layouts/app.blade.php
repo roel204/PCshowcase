@@ -30,7 +30,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @if(!in_array(Route::currentRouteName(), ['login', 'register']))
                         @include('partials.nav')
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
