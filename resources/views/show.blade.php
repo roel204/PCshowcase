@@ -15,14 +15,17 @@
                             </form>
                         @endif
                     </div>
-
                     <div class="card-body">
                         <h2>{{ $computer->name }}</h2>
+                        <div class="mb-3">
+                            @foreach ($computer->tags as $tag)
+                                <span class="badge bg-primary">{{ $tag->name }}</span>
+                            @endforeach
+                        </div>
                         <p><strong>CPU:</strong> {{ $computer->cpu }}</p>
                         <p><strong>GPU:</strong> {{ $computer->gpu }}</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection

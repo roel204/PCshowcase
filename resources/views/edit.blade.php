@@ -42,6 +42,19 @@
                                        required>
                             </div>
 
+                            <div class="mb-3">
+                                <label for="tags" class="form-label">Tags</label>
+                                @foreach ($allTags as $tag)
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="tag{{ $tag->id }}"
+                                               name="tags[]" value="{{ $tag->id }}"
+                                            {{ in_array($tag->id, $computerTags) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="tag{{ $tag->id }}">{{ $tag->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+
+
                             <button type="submit" class="btn btn-primary">Update Computer</button>
                         </form>
                     </div>

@@ -18,4 +18,10 @@ class computer extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function tags(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
 }

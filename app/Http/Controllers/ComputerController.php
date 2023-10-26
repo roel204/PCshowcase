@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\computer;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tag;
 
 class ComputerController extends Controller
 {
@@ -25,16 +26,20 @@ class ComputerController extends Controller
 
     public function create()
     {
-        return view('create');
+        $tags = Tag::all();
+        return view('create', compact('tags'));
     }
 
     public function edit($id)
     {
-        $computer = computer::findOrFail($id);
+        $computer = Computer::findOrFail($id);
         $this->authorize('edit', $computer);
+        $allTags = Tag::all();
+        $computerTags = $computer->tags->pluck('id')->toArray();
 
-        return view('edit', compact('computer'));
+        return view('edit', compact('computer', 'allTags', 'computerTags'));
     }
+
 
     public function toggleStatus($id)
     {
@@ -53,11 +58,13 @@ class ComputerController extends Controller
         ]);
 
         $user = Auth::user();
-        $user->computers()->create([
+        $computer = $user->computers()->create([
             'name' => $request->input('name'),
             'cpu' => $request->input('cpu'),
             'gpu' => $request->input('gpu'),
         ]);
+
+        $computer->tags()->sync($request->input('tags'));
 
         return redirect()->route('computer.overview')->with('success', 'Computer added successfully.');
     }
@@ -86,6 +93,8 @@ class ComputerController extends Controller
             'cpu' => $request->input('cpu'),
             'gpu' => $request->input('gpu'),
         ]);
+
+        $computer->tags()->sync($request->input('tags'));
 
         return redirect()->route('computer.overview')->with('success', 'Computer updated successfully.');
     }

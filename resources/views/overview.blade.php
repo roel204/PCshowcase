@@ -47,6 +47,7 @@
                                             <input
                                                 type="checkbox"
                                                 name="is_online"
+                                                class="form-check-input"
                                                 {{ $computer->is_online ? 'checked' : '' }}
                                                 onchange="this.form.submit()"
                                             >

@@ -22,12 +22,17 @@
                             <div class="row">
                                 @forelse ($computers as $computer)
                                     <div class="col-md-6">
-                                        <a href="{{ route('computer.show', ['id' => $computer->id]) }}">
+                                        <a href="{{ route('computer.show', ['id' => $computer->id]) }}" style="text-decoration: none">
                                             <div class="card mb-3">
                                                 <img src="{{ asset('images/default_pc.jpg') }}" class="card-img-top"
                                                      alt="Default Image">
                                                 <div class="card-body">
                                                     <h5 class="card-title">{{ $computer->name }}</h5>
+                                                    <div class="mb-3">
+                                                        @foreach ($computer->tags as $tag)
+                                                            <span class="badge bg-primary">{{ $tag->name }}</span>
+                                                        @endforeach
+                                                    </div>
                                                 </div>
                                             </div>
                                         </a>

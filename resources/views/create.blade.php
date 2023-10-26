@@ -1,4 +1,3 @@
-<!-- resources/views/computers/create.blade.php -->
 @extends('layouts.app')
 
 @section('content')
@@ -40,6 +39,17 @@
                                     <input type="text" class="form-control" id="gpu" name="gpu" required>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="tags" class="form-label">Tags</label>
+                                    @foreach ($tags as $tag)
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="tag{{ $tag->id }}"
+                                                   name="tags[]" value="{{ $tag->id }}">
+                                            <label class="form-check-label"
+                                                   for="tag{{ $tag->id }}">{{ $tag->name }}</label>
+                                        </div>
+                                    @endforeach
+                                </div>
                                 <button type="submit" class="btn btn-primary">Add Computer</button>
                             </form>
                         </div>
