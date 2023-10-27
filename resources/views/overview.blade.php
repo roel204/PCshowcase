@@ -18,54 +18,49 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>CPU</th>
-                                <th>GPU</th>
-                                <th>Edit</th>
-                                <th>Status</th>
-                                <th>Delete</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($computers as $computer)
+                            <table class="table">
+                                <thead>
                                 <tr>
-                                    <td><a href="{{ route('computer.show', ['id' => $computer->id]) }}">{{ $computer->name }}</a></td>
-                                    <td>{{ $computer->cpu }}</td>
-                                    <td>{{ $computer->gpu }}</td>
-                                    <td>
-                                        <a href="{{ route('computer.edit', ['id' => $computer->id]) }}"
-                                           class="btn btn-primary">Edit</a>
-                                    </td>
-                                    <td>
-
-                                        <form action="{{ route('computer.toggle-status', ['id' => $computer->id]) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input
-                                                type="checkbox"
-                                                name="is_online"
-                                                class="form-check-input"
-                                                {{ $computer->is_online ? 'checked' : '' }}
-                                                onchange="this.form.submit()"
-                                            >
-                                        </form>
-
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('computer.delete', ['id' => $computer->id]) }}"
-                                              method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Edit</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Delete</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($computers as $computer)
+                                    <tr>
+                                        <td class="text-center">
+                                            <a href="{{ route('computer.show', ['id' => $computer->id]) }}">{{ $computer->name }}</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{{ route('computer.edit', ['id' => $computer->id]) }}" class="btn btn-primary">Edit</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <form action="{{ route('computer.toggle-status', ['id' => $computer->id]) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input
+                                                    type="checkbox"
+                                                    name="is_online"
+                                                    class="form-check-input"
+                                                    {{ $computer->is_online ? 'checked' : '' }}
+                                                    onchange="this.form.submit()"
+                                                >
+                                            </form>
+                                        </td>
+                                        <td class="text-center">
+                                            <form action="{{ route('computer.delete', ['id' => $computer->id]) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+
                     </div>
                 </div>
             </div>
