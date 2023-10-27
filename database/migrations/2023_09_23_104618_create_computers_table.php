@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('computers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
+            $table->string('description');
             $table->string('cpu');
             $table->string('gpu');
             $table->boolean('is_online')->default(true);

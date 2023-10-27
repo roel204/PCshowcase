@@ -17,6 +17,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/computer/delete/{id}', [CC::class, 'delete'])->name('computer.delete');
     Route::put('/computer/update/{id}', [CC::class, 'update'])->name('computer.update');
     Route::put('/computer/toggle-status/{id}', [CC::class, 'toggleStatus'])->name('computer.toggle-status');
+    Route::post('/computer/show/{computer}', [CC::class, 'comment'])->name('computer.comment');
 
     //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware('check.admin');
 

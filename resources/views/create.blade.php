@@ -26,17 +26,22 @@
 
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Computer Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <input type="text" class="form-control" id="name" name="name" autocomplete="off" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Computer Description</label>
+                                    <input type="text" class="form-control" id="description" name="description" autocomplete="off" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="cpu" class="form-label">CPU</label>
-                                    <input type="text" class="form-control" id="cpu" name="cpu" required>
+                                    <input type="text" class="form-control" id="cpu" name="cpu" autocomplete="off" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="gpu" class="form-label">GPU</label>
-                                    <input type="text" class="form-control" id="gpu" name="gpu" required>
+                                    <input type="text" class="form-control" id="gpu" name="gpu" autocomplete="off" required>
                                 </div>
 
                                 <div class="mb-3">

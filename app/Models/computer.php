@@ -10,7 +10,7 @@ class computer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'name', 'cpu', 'gpu', 'is_online'];
+    protected $fillable = ['user_id', 'name', 'description', 'cpu', 'gpu', 'is_online'];
 
     protected $casts = ['is_online' => 'boolean'];
 
@@ -23,5 +23,11 @@ class computer extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 
 }

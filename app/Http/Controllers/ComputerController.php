@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\computer;
 use Illuminate\Support\Facades\Auth;
@@ -19,10 +20,11 @@ class ComputerController extends Controller
 
     public function show($id)
     {
-        $computer = computer::where('id', $id)->firstOrFail();
+        $computer = Computer::with('comments')->where('id', $id)->firstOrFail();
 
         return view('show', compact('computer'));
     }
+
 
     public function create()
     {
@@ -53,6 +55,7 @@ class ComputerController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
+            'description' => 'required|string',
             'cpu' => 'required|string',
             'gpu' => 'required|string',
         ]);
@@ -60,6 +63,7 @@ class ComputerController extends Controller
         $user = Auth::user();
         $computer = $user->computers()->create([
             'name' => $request->input('name'),
+            'description' => $request->input('description'),
             'cpu' => $request->input('cpu'),
             'gpu' => $request->input('gpu'),
         ]);
@@ -82,6 +86,7 @@ class ComputerController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
+            'description' => 'required|string',
             'cpu' => 'required|string',
             'gpu' => 'required|string',
         ]);
@@ -90,6 +95,7 @@ class ComputerController extends Controller
 
         $computer->update([
             'name' => $request->input('name'),
+            'description' => $request->input('description'),
             'cpu' => $request->input('cpu'),
             'gpu' => $request->input('gpu'),
         ]);
@@ -97,5 +103,22 @@ class ComputerController extends Controller
         $computer->tags()->sync($request->input('tags'));
 
         return redirect()->route('computer.overview')->with('success', 'Computer updated successfully.');
+    }
+
+    public function comment(Request $request, Computer $computer)
+    {
+        $request->validate([
+            'comment' => 'required|string',
+        ]);
+
+        $user = Auth::user();
+
+        $comment = new Comment();
+        $comment->user_id = $user->id;
+        $comment->computer_id = $computer->id;
+        $comment->comment = $request->input('comment');
+        $comment->save();
+
+        return redirect()->route('computer.show', ['id' => $computer->id]);
     }
 }

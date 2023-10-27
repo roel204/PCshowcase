@@ -16,16 +16,37 @@
                         @endif
                     </div>
                     <div class="card-body">
-                        <h2>{{ $computer->name }}</h2>
+                        <h2 class="mb-4">{{ $computer->name }}</h2>
                         <div class="mb-3">
                             @foreach ($computer->tags as $tag)
                                 <span class="badge bg-primary">{{ $tag->name }}</span>
                             @endforeach
                         </div>
+                        <p>{{ $computer->description }}</p>
                         <p><strong>CPU:</strong> {{ $computer->cpu }}</p>
                         <p><strong>GPU:</strong> {{ $computer->gpu }}</p>
+                    </div>
+                    <hr class="my-4">
+                    <div class="card-body">
+                        <h2>Comments</h2>
+                        <form method="POST" action="{{ route('computer.comment', ['computer' => $computer->id]) }}">
+                            @csrf
+                            <div class="input-group">
+                                <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Write a comment..." required></textarea>
+                                <button type="submit" class="btn btn-primary">Give Comment</button>
+                            </div>
+                        </form>
+                        <div class="comments mt-3">
+                            @foreach ($computer->comments->reverse() as $comment)
+                                <div class="comment mb-3 border p-3">
+                                    <p class="mb-0">{{ $comment->comment }}</p>
+                                    <small class="text-muted">Commented by: {{ $comment->user->name }}</small>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 @endsection
