@@ -16,6 +16,7 @@
                         @endif
                     </div>
                     <div class="card-body">
+                        <small class="text-muted">Created by: {{ $computer->user->name }}</small>
                         <h2 class="mb-4">{{ $computer->name }}</h2>
                         <div class="mb-3">
                             @foreach ($computer->tags as $tag)
@@ -33,7 +34,7 @@
                             @csrf
                             <div class="input-group">
                                 <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Write a comment..." required></textarea>
-                                <button type="submit" class="btn btn-primary">Give Comment</button>
+                                <button type="submit" class="btn btn-primary">Post Comment</button>
                             </div>
                         </form>
                         <div class="comments mt-3">

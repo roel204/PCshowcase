@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
-use App\Models\computer;
+use App\Models\Computer;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Tag;
 
@@ -45,7 +45,7 @@ class ComputerController extends Controller
 
     public function toggleStatus($id)
     {
-        $computer = computer::findOrFail($id);
+        $computer = Computer::findOrFail($id);
         $computer->update(['is_online' => !$computer->is_online]);
 
         return redirect()->route('computer.overview')->with('success', 'Status updated successfully.');
@@ -75,7 +75,7 @@ class ComputerController extends Controller
 
     public function delete($id)
     {
-        $computer = computer::findOrFail($id);
+        $computer = Computer::findOrFail($id);
         $this->authorize('delete', $computer);
         $computer->delete();
 
@@ -91,7 +91,7 @@ class ComputerController extends Controller
             'gpu' => 'required|string',
         ]);
 
-        $computer = computer::findOrFail($id);
+        $computer = Computer::findOrFail($id);
 
         $computer->update([
             'name' => $request->input('name'),

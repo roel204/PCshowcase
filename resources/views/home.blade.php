@@ -52,6 +52,7 @@
                                                      alt="Default Image">
                                                 <div class="card-body">
                                                     <h5 class="card-title">{{ $computer->name }}</h5>
+                                                    <small class="text-muted">Created by: {{ $computer->user->name }}</small>
                                                     <div class="mb-3">
                                                         @foreach ($computer->tags as $tag)
                                                             <span class="badge bg-primary">{{ $tag->name }}</span>
