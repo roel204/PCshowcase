@@ -33,7 +33,8 @@
                         <form method="POST" action="{{ route('computer.comment', ['computer' => $computer->id]) }}">
                             @csrf
                             <div class="input-group">
-                                <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Write a comment..." required></textarea>
+                                <textarea class="form-control" id="comment" name="comment" rows="3"
+                                          placeholder="Write a comment..." required></textarea>
                                 <button type="submit" class="btn btn-primary">Post Comment</button>
                             </div>
                         </form>
