@@ -11,12 +11,17 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
+        $request->validate([
+            'search' => 'nullable|string|max:255',
+        ]);
+
         $search = $request->input('search');
         $selectedTags = $request->input('tags', []);
 
         $computers = Computer::where('is_online', true)->where(function ($query) use ($search) {
             $query->when($search, function ($q) use ($search) {
                 $q->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%')
                     ->orWhere('cpu', 'like', '%' . $search . '%')
                     ->orWhere('gpu', 'like', '%' . $search . '%');
             });
@@ -32,6 +37,5 @@ class HomeController extends Controller
 
         return view('home', compact('computers', 'tags'));
     }
-
 
 }

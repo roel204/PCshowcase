@@ -16,6 +16,11 @@
                         @endif
                     </div>
                     <div class="card-body">
+                        @if ($computer->image_link)
+                            <img src="{{ $computer->image_link }}" class="card-img-top" alt="Computer Image">
+                        @else
+                            <!-- Display nothing when there's no image link -->
+                        @endif
                         <small class="text-muted">Created by: {{ $computer->user->name }}</small>
                         <h2 class="mb-4">{{ $computer->name }}</h2>
                         <div class="mb-3">

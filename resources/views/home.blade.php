@@ -32,6 +32,9 @@
                                 <button class="btn btn-outline-secondary" type="submit">Search</button>
                             </div>
                         </form>
+                        @error('search')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -51,8 +54,7 @@
                                         <a href="{{ route('computer.show', ['id' => $computer->id]) }}"
                                            style="text-decoration: none">
                                             <div class="card mb-3">
-                                                <img src="{{ asset('images/default_pc.jpg') }}" class="card-img-top"
-                                                     alt="Default Image">
+                                                <img src="{{ $computer->image_link ?: asset('images/default_pc.jpg') }}" class="card-img-top" alt="Computer Image">
                                                 <div class="card-body">
                                                     <h5 class="card-title">{{ $computer->name }}</h5>
                                                     <small class="text-muted">Created

@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->string('description');
+            $table->string('description', 2000);
             $table->string('cpu');
             $table->string('gpu');
             $table->boolean('is_online')->default(true);

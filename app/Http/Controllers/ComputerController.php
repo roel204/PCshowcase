@@ -54,10 +54,11 @@ class ComputerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'cpu' => 'required|string',
-            'gpu' => 'required|string',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:2000',
+            'cpu' => 'required|string|max:255',
+            'gpu' => 'required|string|max:255',
+            'image_link' => 'nullable|url|max:5000',
         ]);
 
         $user = Auth::user();
@@ -66,6 +67,7 @@ class ComputerController extends Controller
             'description' => $request->input('description'),
             'cpu' => $request->input('cpu'),
             'gpu' => $request->input('gpu'),
+            'image_link' => $request->input('image_link'),
         ]);
 
         $computer->tags()->sync($request->input('tags'));
@@ -85,10 +87,11 @@ class ComputerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'cpu' => 'required|string',
-            'gpu' => 'required|string',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:2000',
+            'cpu' => 'required|string|max:255',
+            'gpu' => 'required|string|max:255',
+            'image_link' => 'nullable|url|max:5000',
         ]);
 
         $computer = Computer::findOrFail($id);
@@ -98,6 +101,7 @@ class ComputerController extends Controller
             'description' => $request->input('description'),
             'cpu' => $request->input('cpu'),
             'gpu' => $request->input('gpu'),
+            'image_link' => $request->input('image_link'),
         ]);
 
         $computer->tags()->sync($request->input('tags'));
@@ -108,7 +112,7 @@ class ComputerController extends Controller
     public function comment(Request $request, Computer $computer)
     {
         $request->validate([
-            'comment' => 'required|string',
+            'comment' => 'required|string|max:255',
         ]);
 
         $user = Auth::user();

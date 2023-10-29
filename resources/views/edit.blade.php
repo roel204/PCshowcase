@@ -28,24 +28,45 @@
                                 <label for="name" class="form-label">Computer Name</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                        value="{{ $computer->name }}" autocomplete="off" required>
+                                @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="description" class="form-label">Computer Description</label>
                                 <input type="text" class="form-control" id="description" name="description"
                                        value="{{ $computer->description }}" autocomplete="off" required>
+                                @error('description')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="cpu" class="form-label">CPU</label>
                                 <input type="text" class="form-control" id="cpu" name="cpu" value="{{ $computer->cpu }}"
                                        autocomplete="off" required>
+                                @error('cpu')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="gpu" class="form-label">GPU</label>
                                 <input type="text" class="form-control" id="gpu" name="gpu" value="{{ $computer->gpu }}"
                                        autocomplete="off" required>
+                                @error('gpu')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="image_link" class="form-label">Image Link</label>
+                                <input type="text" class="form-control" id="image_link" name="image_link" value="{{ $computer->image_link }}"
+                                       autocomplete="off" >
+                                @error('image_link')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
