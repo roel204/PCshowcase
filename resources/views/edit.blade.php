@@ -62,8 +62,9 @@
 
                             <div class="mb-3">
                                 <label for="image_link" class="form-label">Image Link</label>
-                                <input type="text" class="form-control" id="image_link" name="image_link" value="{{ $computer->image_link }}"
-                                       autocomplete="off" >
+                                <input type="text" class="form-control" id="image_link" name="image_link"
+                                       value="{{ $computer->image_link }}"
+                                       autocomplete="off">
                                 @error('image_link')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror

@@ -8,7 +8,6 @@ use App\Models\Computer;
 
 class HomeController extends Controller
 {
-
     public function index(Request $request)
     {
         $request->validate([
@@ -37,5 +36,4 @@ class HomeController extends Controller
 
         return view('home', compact('computers', 'tags'));
     }
-
 }

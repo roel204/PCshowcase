@@ -10,7 +10,6 @@ use App\Models\Tag;
 
 class ComputerController extends Controller
 {
-
     public function overview()
     {
         $computers = auth()->user()->computers;
@@ -24,7 +23,6 @@ class ComputerController extends Controller
 
         return view('show', compact('computer'));
     }
-
 
     public function create()
     {
@@ -41,7 +39,6 @@ class ComputerController extends Controller
 
         return view('edit', compact('computer', 'allTags', 'computerTags'));
     }
-
 
     public function toggleStatus($id)
     {
@@ -112,7 +109,7 @@ class ComputerController extends Controller
     public function comment(Request $request, Computer $computer)
     {
         $request->validate([
-            'comment' => 'required|string|max:255',
+            'comment' => 'required|string|max:1000',
         ]);
 
         $user = Auth::user();

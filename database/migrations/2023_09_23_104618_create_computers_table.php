@@ -13,10 +13,10 @@ return new class extends Migration {
         Schema::create('computers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('name');
+            $table->string('name', 255);
             $table->string('description', 2000);
-            $table->string('cpu');
-            $table->string('gpu');
+            $table->string('cpu', 255);
+            $table->string('gpu',255);
             $table->boolean('is_online')->default(true);
             $table->timestamps();
         });
