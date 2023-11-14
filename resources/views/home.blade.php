@@ -7,9 +7,10 @@
                 <div class="card">
                     <div class="card-header">
                         <form action="{{ route('home') }}" method="get">
+                            <label for="search" class="visually-hidden">{{__('text.search')}}</label>
                             <div class="input-group mb-3">
-                                <input type="text" name="search" class="form-control" autocomplete="off"
-                                       placeholder="Search..."
+                                <input type="text" id="search" name="search" class="form-control" autocomplete="off"
+                                       placeholder="{{__('messages.search')}}"
                                        value="{{ request('search') }}">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary dropdown-toggle" style="border-radius: 0"

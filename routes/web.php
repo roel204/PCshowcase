@@ -11,6 +11,12 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+    Route::get('set-locale/{locale}', function ($locale) {
+        App::setLocale($locale);
+        session()->put('locale', $locale);
+        return redirect()->back();
+    })->name('locale');
+
     Route::get('/computer/show/{id}', [CC::class, 'show'])->name('computer.show');
     Route::get('/computer/overview', [CC::class, 'overview'])->name('computer.overview');
     Route::get('/computer/edit/{id}', [CC::class, 'edit'])->name('computer.edit');
