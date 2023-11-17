@@ -20,10 +20,10 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th class="text-center">Name</th>
-                                <th class="text-center">Edit</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Delete</th>
+                                <th class="text-center">{{__('messages.name')}}</th>
+                                <th class="text-center">{{__('messages.edit')}}</th>
+                                <th class="text-center">{{__('messages.status')}}</th>
+                                <th class="text-center">{{__('messages.delete')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -34,16 +34,18 @@
                                     </td>
                                     <td class="text-center">
                                         <a href="{{ route('computer.edit', ['id' => $computer->id]) }}"
-                                           class="btn btn-primary">Edit</a>
+                                           class="btn btn-primary">{{__('messages.edit')}}</a>
                                     </td>
                                     <td class="text-center">
                                         <form action="{{ route('computer.toggle-status', ['id' => $computer->id]) }}"
                                               method="post">
                                             @csrf
                                             @method('PUT')
+                                            <label for="is_online" class="visually-hidden">{{__('messages.status')}}</label>
                                             <input
                                                 type="checkbox"
                                                 name="is_online"
+                                                id="is_online"
                                                 class="form-check-input"
                                                 {{ $computer->is_online ? 'checked' : '' }}
                                                 onchange="this.form.submit()"
@@ -55,7 +57,7 @@
                                               method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">{{__('messages.delete')}}</button>
                                         </form>
                                     </td>
                                 </tr>

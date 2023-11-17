@@ -7,10 +7,10 @@
                 <div class="card">
                     <div class="card-header">
                         <form action="{{ route('home') }}" method="get">
-                            <label for="search" class="visually-hidden">{{__('text.search')}}</label>
+                            <label for="search" class="visually-hidden">{{__('messages.search')}}</label>
                             <div class="input-group mb-3">
                                 <input type="text" id="search" name="search" class="form-control" autocomplete="off"
-                                       placeholder="{{__('messages.search')}}"
+                                       placeholder="{{__('messages.search')}}..."
                                        value="{{ request('search') }}">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary dropdown-toggle" style="border-radius: 0"
@@ -30,7 +30,7 @@
 
                                     </ul>
                                 </div>
-                                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                                <button class="btn btn-outline-secondary" type="submit">{{__('messages.search')}}</button>
                             </div>
                         </form>
                         @error('search')
@@ -59,8 +59,7 @@
                                                      class="card-img-top" alt="Computer Image">
                                                 <div class="card-body">
                                                     <h5 class="card-title">{{ $computer->name }}</h5>
-                                                    <small class="text-muted">Created
-                                                        by: {{ $computer->user->name }}</small>
+                                                    <small class="text-muted">{{__('messages.created')}} {{ $computer->user->name }}</small>
                                                     <div class="mb-3">
                                                         @foreach ($computer->tags as $tag)
                                                             <span class="badge bg-primary">{{ $tag->name }}</span>

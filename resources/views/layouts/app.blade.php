@@ -12,7 +12,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -64,7 +63,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('messages.logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -80,7 +79,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="languageDropdown">
                         <li><a class="dropdown-item" href="{{ route('locale', 'en') }}">English</a></li>
-                        <li><a class="dropdown-item" href="{{ route('locale', 'nl') }}">Dutch</a></li>
+                        <li><a class="dropdown-item" href="{{ route('locale', 'nl') }}">Nederlands</a></li>
                     </ul>
                 </div>
             </div>

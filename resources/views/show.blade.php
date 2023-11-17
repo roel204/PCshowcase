@@ -11,7 +11,7 @@
                             <form action="{{ route('computer.delete', ['id' => $computer->id]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger">{{__('messages.delete')}}</button>
                             </form>
                         @endif
                     </div>
@@ -21,7 +21,7 @@
                         @else
                             <!-- Display nothing when there's no image link -->
                         @endif
-                        <small class="text-muted">Created by: {{ $computer->user->name }}</small>
+                        <small class="text-muted">{{__('messages.created')}} {{ $computer->user->name }}</small>
                         <h2 class="mb-4">{{ $computer->name }}</h2>
                         <div class="mb-3">
                             @foreach ($computer->tags as $tag)
@@ -29,24 +29,24 @@
                             @endforeach
                         </div>
                         <p>{{ $computer->description }}</p>
-                        <p><strong>CPU:</strong> {{ $computer->cpu }}</p>
-                        <p><strong>GPU:</strong> {{ $computer->gpu }}</p>
+                        <p><strong>{{__('messages.cpu')}}</strong> {{ $computer->cpu }}</p>
+                        <p><strong>{{__('messages.gpu')}}</strong> {{ $computer->gpu }}</p>
                     </div>
                     <hr class="my-4">
                     <div class="card-body">
-                        <h2>Comments</h2>
+                        <h2>{{__('messages.comments')}}</h2>
 
                         @if (auth()->user()->computers->count() > 0)
                             <form method="POST" action="{{ route('computer.comment', ['computer' => $computer->id]) }}">
                                 @csrf
                                 <div class="input-group">
                                     <textarea class="form-control" id="comment" name="comment" rows="3"
-                                              placeholder="Write a comment..." required></textarea>
-                                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                                              placeholder="{{__('messages.write_comment')}}" required></textarea>
+                                    <button type="submit" class="btn btn-primary">{{__('messages.post_comment')}}</button>
                                 </div>
                             </form>
                         @else
-                            <p class="text-danger">You're allowed to comment after you post your own PC.</p>
+                            <p class="text-danger">{{__('messages.cant_comment')}}</p>
                         @endif
                         @error('comment')
                         <div class="text-danger">{{ $message }}</div>
@@ -55,7 +55,7 @@
                             @foreach ($computer->comments->reverse() as $comment)
                                 <div class="comment mb-3 border p-3">
                                     <p class="mb-0">{{ $comment->comment }}</p>
-                                    <small class="text-muted">Commented by: {{ $comment->user->name }}</small>
+                                    <small class="text-muted">{{__('messages.comment_by')}} {{ $comment->user->name }}</small>
                                 </div>
                             @endforeach
                         </div>

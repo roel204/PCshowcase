@@ -1,5 +1,26 @@
 <?php
 
 return [
-    'search' => 'Search...',
+    'search' => 'Search',
+    'created' => 'Created by:',
+    'create' => 'Post Computer',
+    'overview' => 'Your Computers',
+    'add' => 'Add a new Computer',
+    'name' => 'Computer Name:',
+    'desc' => 'Computer Description:',
+    'cpu' => 'Processor:',
+    'gpu' => 'Graphics Card:',
+    'image' => 'Link to Image:',
+    'post' => 'Post Computer',
+    'edit' => 'Edit',
+    'status' => 'Online Status',
+    'delete' => 'Delete',
+    'logout' => 'Log Out',
+    'comments' => 'Comments',
+    'write_comment' => 'Write a comment...',
+    'post_comment' => 'Post comment',
+    'cant_comment' => 'Youre allowed to comment after you post your own PC.',
+    'comment_by' => 'Commented by:',
+    'login' => 'Log In',
+    'register' => 'Register',
 ];

@@ -25,7 +25,7 @@
                             @method('PUT')
 
                             <div class="mb-3">
-                                <label for="name" class="form-label">Computer Name</label>
+                                <label for="name" class="form-label">{{__('messages.name')}}</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                        value="{{ $computer->name }}" autocomplete="off" required>
                                 @error('name')
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="description" class="form-label">Computer Description</label>
+                                <label for="description" class="form-label">{{__('messages.desc')}}</label>
                                 <input type="text" class="form-control" id="description" name="description"
                                        value="{{ $computer->description }}" autocomplete="off" required>
                                 @error('description')
@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="cpu" class="form-label">CPU</label>
+                                <label for="cpu" class="form-label">{{__('messages.cpu')}}</label>
                                 <input type="text" class="form-control" id="cpu" name="cpu" value="{{ $computer->cpu }}"
                                        autocomplete="off" required>
                                 @error('cpu')
@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="gpu" class="form-label">GPU</label>
+                                <label for="gpu" class="form-label">{{__('messages.gpu')}}</label>
                                 <input type="text" class="form-control" id="gpu" name="gpu" value="{{ $computer->gpu }}"
                                        autocomplete="off" required>
                                 @error('gpu')
@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="image_link" class="form-label">Image Link</label>
+                                <label for="image_link" class="form-label">{{__('messages.image')}}</label>
                                 <input type="text" class="form-control" id="image_link" name="image_link"
                                        value="{{ $computer->image_link }}"
                                        autocomplete="off">
@@ -83,7 +83,7 @@
                             </div>
 
 
-                            <button type="submit" class="btn btn-primary">Update Computer</button>
+                            <button type="submit" class="btn btn-primary">{{__('messages.edit')}}</button>
                         </form>
                     </div>
                 </div>

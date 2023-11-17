@@ -1,5 +1,25 @@
 <?php
 
 return [
-    'search' => 'Zoek...',
+    'search' => 'Zoek',
+    'created' => 'Gemaakt Door:',
+    'create' => 'Plaats Computer',
+    'overview' => 'Jouw Computers',
+    'add' => 'Maak een nieuwe Computer',
+    'name' => 'Computer Naam:',
+    'desc' => 'Computer Beschrijving:',
+    'cpu' => 'Processor:',
+    'gpu' => 'Grafiesche Kaart:',
+    'image' => 'Link naar Afbeelding:',
+    'edit' => 'Aanpassen',
+    'status' => 'Online Status',
+    'delete' => 'Verwijderen',
+    'logout' => 'Log Uit',
+    'comments' => 'Reacties',
+    'write_comment' => 'Schrijf een reactie...',
+    'post_comment' => 'Plaats reactie',
+    'cant_comment' => 'Je moet eerst je eigen computer plaatsen om een reactie te geven.',
+    'comment_by' => 'Geplaatst door:',
+    'login' => 'Log In',
+    'register' => 'Registreer',
 ];
