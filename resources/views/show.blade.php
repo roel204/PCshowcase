@@ -40,6 +40,7 @@
                             <form method="POST" action="{{ route('computer.comment', ['computer' => $computer->id]) }}">
                                 @csrf
                                 <div class="input-group">
+                                    <label for="comment" class="visually-hidden">{{__('messages.write_comment')}}</label>
                                     <textarea class="form-control" id="comment" name="comment" rows="3"
                                               placeholder="{{__('messages.write_comment')}}" required></textarea>
                                     <button type="submit" class="btn btn-primary">{{__('messages.post_comment')}}</button>
